@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import Icon from '../../components/Icon.astro';
+import { features } from '../../data/features';
+---
+<Base title="Features" description="Check-out and return, stock levels, counts, offline mode, roles and approvals, and reports. Everything a store or workshop needs to track tools and stock.">
+  <section class="hero"><div class="wrap"><span class="eyebrow">Features</span><h1>Everything you need. Nothing you don’t.</h1><p class="lede">Six things Ventrix does well, each built around a real job in a store or a workshop.</p></div></section>
+  <section class="sec tight"><div class="wrap grid g3">
+    {features.map((f) => <a class="card glass link" href={`/features/${f.slug}`}><div class="ic"><Icon name={f.icon as any} /></div><h3>{f.name}</h3><p>{f.short}</p><span class="more">Learn more →</span></a>)}
+  </div></section>
+  <Cta />
+</Base>
