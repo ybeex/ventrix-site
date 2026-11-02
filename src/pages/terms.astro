@@ -1,0 +1,56 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { SITE, naira } from '../config';
+const L = SITE.legal;
+---
+<Legal title="Terms of Service" description="The terms that apply when you use Ventrix by Ventrix.">
+<p>These terms are an agreement between <strong>Ventrix</strong> (“we”, “us”), and the organization that signs up for {SITE.product} (“you”, “the Customer”). By creating an account or using the service you agree to them. If you accept on behalf of an organization, you confirm you have authority to do so.</p>
+
+<h2>1. The service</h2>
+<p>{SITE.product} is a web application for tracking tools, equipment and stock. We may improve, change or remove features over time, and we’ll try to give notice of changes that significantly reduce what you can do.</p>
+
+<h2>2. Accounts</h2>
+<ul>
+<li>You must give accurate information and keep sign-in details and PINs confidential.</li>
+<li>You are responsible for what happens under your organization’s accounts, including the roles you assign.</li>
+<li>Tell us promptly if you think an account has been compromised.</li>
+</ul>
+
+<h2>3. Acceptable use</h2>
+<p>You won’t: break the law using the service; upload content you have no right to upload or that is harmful or malicious; try to access other customers’ data or to disrupt or probe the service; resell the service without our written consent; or use it to store data it isn’t designed for, such as payment card numbers.</p>
+
+<h2>4. Fees and payment</h2>
+<ul>
+<li>The price is <strong>{naira(SITE.price.amount)} per {SITE.price.period}</strong> per organization, unless we agree something different in writing. Prices are in Nigerian naira.</li>
+<li>Fees are charged in advance for each billing period, are non-refundable except where the law or these terms require otherwise, and exclude any taxes, which you pay where they apply.</li>
+<li>We’ll give at least 30 days’ notice before changing the price for your next billing period.</li>
+<li>If payment is overdue we may suspend access after giving you notice.</li>
+</ul>
+
+<h2>5. Your data</h2>
+<p>You own the data you put into {SITE.product}. You give us permission to host and process it only to provide the service, as described in our <a href="/privacy">Privacy Policy</a>. You are responsible for having the right to enter personal data about your staff and others. You can export your records as CSV at any time while your account is active, and for a reasonable period after it ends.</p>
+
+<h2>6. Our rights</h2>
+<p>We own the service, its software and design. You get a limited, non-exclusive, non-transferable right to use it during your subscription. If you send us feedback, we may use it without obligation to you.</p>
+
+<h2>7. Availability and support</h2>
+<p>We work to keep the service available and to fix problems quickly, but we don’t promise it will be uninterrupted or error free. Offline mode is a convenience: please check that your queued actions have synced. Support is by email at <a href={`mailto:${SITE.email.support}`}>{SITE.email.support}</a>.</p>
+
+<h2>8. Ending the agreement</h2>
+<p>You can cancel at any time; access continues to the end of the paid period. We can suspend or end your access if you seriously or repeatedly break these terms, or if we must by law, and we’ll tell you why where we can. After the agreement ends we’ll delete your data as described in the Privacy Policy.</p>
+
+<h2>9. Disclaimers</h2>
+<p>The service is provided “as is” and “as available”. To the extent the law allows, we disclaim all other warranties, including fitness for a particular purpose. {SITE.product} is a record-keeping aid: you remain responsible for decisions you make using it, including stock, safety and compliance decisions.</p>
+
+<h2>10. Limit of liability</h2>
+<p>To the extent the law allows, we are not liable for indirect or consequential loss, or loss of profit, revenue or data. Our total liability for any claim relating to the service is limited to the fees you paid us in the 12 months before the claim arose. Nothing in these terms limits liability that cannot be limited by law.</p>
+
+<h2>11. Changes to these terms</h2>
+<p>We may update these terms. For material changes we’ll give you notice, normally 30 days in advance. If you keep using the service after the change takes effect, you accept it.</p>
+
+<h2>12. Governing law and disputes</h2>
+<p>These terms are governed by {L.governingLaw}. The parties will try to resolve disputes in good faith first; otherwise the courts of Nigeria have jurisdiction.</p>
+
+<h2>13. Contact</h2>
+<p>Ventrix<br />Email: <a href={`mailto:${SITE.email.legal}`}>{SITE.email.legal}</a></p>
+</Legal>

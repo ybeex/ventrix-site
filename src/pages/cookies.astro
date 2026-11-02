@@ -1,0 +1,31 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { SITE } from '../config';
+---
+<Legal title="Cookie Policy" description="What cookies and local storage ventrix.app and Ventrix use, and why.">
+<p>Short version: our website sets <strong>no cookies</strong> and runs <strong>no advertising or tracking scripts</strong>. The Ventrix app uses your browser’s storage to keep you signed in and to work offline. That is all essential, so we don’t show a cookie banner.</p>
+
+<h2>Marketing website ({SITE.domain})</h2>
+<table><thead><tr><th>Name</th><th>Type</th><th>Purpose</th><th>Lasts</th></tr></thead><tbody>
+<tr><td><code>vx.theme</code></td><td>Local storage</td><td>Remembers if you chose light or dark mode</td><td>Until you clear it</td></tr>
+</tbody></table>
+<p>We may use a privacy-friendly analytics tool (Plausible) to count visits. It doesn’t use cookies, doesn’t collect personal data and doesn’t track you across sites. If we ever add a tool that does, we’ll update this page and ask for your consent first.</p>
+
+<h2>The Ventrix app</h2>
+<table><thead><tr><th>Name</th><th>Type</th><th>Purpose</th><th>Lasts</th></tr></thead><tbody>
+<tr><td><code>sk.session</code></td><td>Session storage</td><td>Keeps you signed in when you refresh the page, with an inactivity timeout</td><td>Until you close the tab, sign out, or the timeout ends</td></tr>
+<tr><td><code>sk.queue</code></td><td>Local storage</td><td>Holds actions you took offline until they sync</td><td>Until synced</td></tr>
+<tr><td><code>sk.device</code></td><td>Local storage</td><td>An anonymous ID for this device, used to recognise trusted devices</td><td>Until cleared</td></tr>
+<tr><td><code>sk.org</code></td><td>Local storage</td><td>Remembers your organization’s short name on the sign-in form (not your password)</td><td>Until cleared</td></tr>
+<tr><td><code>sk.snap</code></td><td>Local storage</td><td>Records when your offline copy was last refreshed</td><td>Until you sign out</td></tr>
+<tr><td><code>sk.theme</code></td></td><td>Local storage</td><td>Remembers your theme</td><td>Until cleared</td></tr>
+<tr><td><code>Ventrix-cache-v1</code></td><td>IndexedDB</td><td>A local copy of items and people so search works offline</td><td>Until you sign out</td></tr>
+</tbody></table>
+<p>Signing out clears the session and the offline copy on that device.</p>
+
+<h2>Your choices</h2>
+<p>You can clear site data in your browser at any time. Doing so will sign you out, and any actions still waiting to sync will be lost, so sync first.</p>
+
+<h2>Contact</h2>
+<p>Questions? <a href={`mailto:${SITE.email.privacy}`}>{SITE.email.privacy}</a>. See also our <a href="/privacy">Privacy Policy</a>.</p>
+</Legal>
