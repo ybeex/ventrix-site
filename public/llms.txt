@@ -1,0 +1,34 @@
+# Ventrix
+
+> Ventrix is web-based tool and stock tracking software for stores, workshops, tool rooms, schools and field crews. It records who has checked-out equipment, tracks consumable stock and counts, and supports everyday work offline.
+
+Ventrix is built by Ventrix and is available at https://ventrix.app. The application is at https://app.ventrix.app.
+
+## What it does
+
+- Check tools and equipment out to a person, team, department or job; track due dates, overdue items and partial returns.
+- Track consumables separately from reusable assets, with stock minimums, reorder quantities and low-stock alerts.
+- Run shelf-based stock counts, record reasons for differences and optionally require supervisor approval.
+- Continue searching, checking items out and returning them while offline; queued actions sync when the connection returns.
+- Set staff roles, approval policies and optional photo proof; review activity and export reports as CSV.
+
+## Pricing
+
+One plan costs NGN 14,999 per organization per month. See https://ventrix.app/pricing for current inclusions and details.
+
+## Audience
+
+Ventrix is intended for small stores, tool rooms, workshops, schools and labs, contractors, and field crews that need to track shared equipment and consumable stock.
+
+## Pages
+
+- [Home](https://ventrix.app/): product overview and common questions.
+- [Features](https://ventrix.app/features): product capabilities.
+- [Use cases](https://ventrix.app/use-cases): industries and teams Ventrix serves.
+- [Pricing](https://ventrix.app/pricing): plan, price and pricing questions.
+- [About](https://ventrix.app/about): product and company background.
+- [Security](https://ventrix.app/security): security information.
+- [Blog](https://ventrix.app/blog): practical guides for stores, workshops and tool rooms.
+- [Contact](https://ventrix.app/contact): contact the Ventrix team.
+- [Sitemap](https://ventrix.app/sitemap-index.xml): crawlable site URLs.
+- [RSS feed](https://ventrix.app/rss.xml): latest blog posts.
