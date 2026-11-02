@@ -1,0 +1,58 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { SITE } from '../config';
+const L = SITE.legal;
+---
+<Legal title="Privacy Policy" description="How Ventrix collects, uses and protects personal data when you use ventrix.app and Ventrix.">
+<p>This policy explains how <strong>Ventrix</strong> (“we”, “us”), handles personal data when you visit {SITE.domain} or use {SITE.product}. We follow the Nigeria Data Protection Act 2023 (NDPA) and, where it applies to you, the EU/UK GDPR.</p>
+
+<h2>1. Two roles we play</h2>
+<ul>
+<li><strong>As controller</strong> we decide how your personal data is used when you visit our website, contact us, or sign up as a customer contact.</li>
+<li><strong>As processor</strong> we handle the records a customer stores in {SITE.product} (items, people, transactions, photos) on that customer’s behalf and on their instructions. The customer is the controller of that data. If you are an employee of a customer, please contact your employer about how they use it.</li>
+</ul>
+
+<h2>2. What we collect</h2>
+<table><thead><tr><th>Data</th><th>Examples</th><th>Why</th></tr></thead><tbody>
+<tr><td>Enquiries</td><td>Name, email, business name, message</td><td>To reply to you and discuss using {SITE.product}</td></tr>
+<tr><td>Account data</td><td>Name, email, role, sign-in credentials, optional PIN</td><td>To create and secure accounts and let people sign in</td></tr>
+<tr><td>Customer records</td><td>Items, shelves, people and teams, check-outs, returns, counts, notes, transaction photos</td><td>To provide the service the customer asked for</td></tr>
+<tr><td>Billing data</td><td>Organization name, contact, payment status</td><td>To invoice and collect payment</td></tr>
+<tr><td>Technical data</td><td>IP address, device and browser type, request logs, error reports</td><td>To keep the service secure, reliable and fast</td></tr>
+</tbody></table>
+<p>We do not intentionally collect special categories of personal data, and {SITE.product} is not meant for anyone under 18.</p>
+
+<h2>3. Why we use it (our legal bases)</h2>
+<ul>
+<li><strong>Contract:</strong> to provide the service and handle billing.</li>
+<li><strong>Legitimate interests:</strong> to secure and improve the service and answer enquiries, where this doesn’t override your rights.</li>
+<li><strong>Consent:</strong> where we ask for it, for example optional communications. You can withdraw it at any time.</li>
+<li><strong>Legal obligation:</strong> such as tax and accounting records.</li>
+</ul>
+<p>We do not sell personal data, and we do not use it for advertising.</p>
+
+<h2>4. Who we share it with</h2>
+<p>Only with service providers who help us run {SITE.product}, under written terms: our hosting, email and payment service providers. We may also disclose data where the law requires it, or to protect rights and safety. If our business is sold or reorganised, data may transfer to the new owner under this policy.</p>
+
+<h2>5. International transfers</h2>
+<p>Our providers may process data outside Nigeria. Where they do, we use safeguards required by the NDPA and, where relevant, the GDPR, such as contractual protections.</p>
+
+<h2>6. How long we keep it</h2>
+<p>We keep customer records for as long as the customer has an account, then for a short period afterwards so they can export it, and then delete or anonymise it unless the law requires us to keep it. Enquiries are kept for as long as needed to deal with them and for a reasonable period after. Backups are overwritten on a rolling basis.</p>
+
+<h2>7. Security</h2>
+<p>We use access controls, role-based permissions, encrypted connections (HTTPS), session timeouts and an activity log. No system is perfectly secure; if a breach affects your data, we will notify you and the regulator as the law requires. See our <a href="/security">Security page</a>.</p>
+
+<h2>8. Your rights</h2>
+<p>You may ask us to give you access to your data, correct it, delete it, restrict or object to its use, move it to another provider, or withdraw consent. To use these rights email <a href={`mailto:${SITE.email.privacy}`}>{SITE.email.privacy}</a>. We may need to verify who you are. If you are a customer’s employee, we may refer you to the customer, who controls that data.</p>
+<p>You also have the right to complain to the Nigeria Data Protection Commission, or to your local data protection authority if you are in the EU/UK.</p>
+
+<h2>9. Cookies and local storage</h2>
+<p>See our <a href="/cookies">Cookie Policy</a>. Our website sets no tracking cookies.</p>
+
+<h2>10. Changes</h2>
+<p>If we change this policy in a way that matters, we’ll update the date above and, for customers, tell you in the app or by email.</p>
+
+<h2>11. Contact</h2>
+<p>Ventrix<br />Email: <a href={`mailto:${SITE.email.privacy}`}>{SITE.email.privacy}</a></p>
+</Legal>
