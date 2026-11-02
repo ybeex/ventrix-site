@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import { getCollection, render } from 'astro:content';
+import { SITE } from '../../config';
+import { fmt, readingTime, slugify } from '../../lib';
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).sort((a, b) => +b.data.date - +a.data.date);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post, related: posts.filter((p) => p.id !== post.id && p.data.tags.some((t) => post.data.tags.includes(t))).slice(0, 2) } }));
+}
+const { post, related } = Astro.props;
+const { Content, headings } = await render(post);
+const toc = headings.filter((h) => h.depth === 2);
+const ld = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.data.title, description: post.data.description, datePublished: post.data.date.toISOString(), dateModified: (post.data.updated ?? post.data.date).toISOString(), author: { '@type': 'Organization', name: post.data.author }, publisher: { '@type': 'Organization', name: SITE.company }, mainEntityOfPage: `${SITE.url}/blog/${post.id}` };
+---
+<Base title={post.data.title} description={post.data.description} type="article" jsonLd={ld} published={post.data.date.toISOString()}>
+  <article>
+    <section class="doc-head"><div class="wrap narrow"><span class="eyebrow"><a href="/blog" style="text-decoration:none">Blog</a></span><h1 style="font-size:clamp(40px,6vw,64px)">{post.data.title}</h1>
+      <p class="lede" style="margin-top:14px">{post.data.description}</p>
+      <p class="meta">{post.data.author} · {fmt(post.data.date)} · {readingTime(post.body)} min read</p>
+      <div class="tags" style="margin-top:12px">{post.data.tags.map((t) => <a class="badge" href={`/blog/tags/${slugify(t)}`}>{t}</a>)}</div></div></section>
+    <section class="sec tight"><div class="wrap narrow">
+      {toc.length > 2 && <nav class="toc glass" aria-label="Contents"><strong>In this guide</strong><ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol></nav>}
+      <div class="prose"><Content /></div>
+    </div></section>
+  </article>
+  {related.length > 0 && <section class="sec tight"><div class="wrap"><h2>Keep reading</h2><div class="grid g2">{related.map((p) => <a class="card glass post-card" href={`/blog/${p.id}`}><h3>{p.data.title}</h3><p>{p.data.description}</p></a>)}</div></div></section>}
+  <Cta title="Ready to try it?" text="Ventrix gives you the check-out log, counts and low-stock alerts this guide describes." />
+</Base>
