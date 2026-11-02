@@ -1,0 +1,5 @@
+---
+import { SITE } from '../config';
+const { title = 'Put a name next to every tool.', text = 'Add your items, add your team, and start checking things out.' } = Astro.props;
+---
+<section class="sec"><div class="wrap"><div class="band"><h2>{title}</h2><p>{text}</p><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a class="btn" href={SITE.appUrl}>Get started</a><a class="btn" href="/pricing" style="background:transparent;color:inherit;border-color:currentColor">See pricing</a></div></div></div></section>
