@@ -1,0 +1,15 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { fmt, readingTime, slugify } from '../../../lib';
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const tags = new Map<string, string>(); posts.forEach((p) => p.data.tags.forEach((t) => tags.set(slugify(t), t)));
+  return [...tags].map(([slug, name]) => ({ params: { tag: slug }, props: { name, posts: posts.filter((p) => p.data.tags.includes(name)).sort((a, b) => +b.data.date - +a.data.date) } }));
+}
+const { name, posts } = Astro.props;
+---
+<Base title={`${name} articles`} description={`Blog posts about ${name.toLowerCase()} from the Ventrix team.`}>
+  <section class="hero"><div class="wrap"><span class="eyebrow"><a href="/blog" style="text-decoration:none">Blog</a> / Tag</span><h1>{name}</h1></div></section>
+  <section class="sec tight"><div class="wrap grid g2">{posts.map((p) => <a class="card glass post-card" href={`/blog/${p.id}`}><h3>{p.data.title}</h3><p>{p.data.description}</p><span class="muted" style="font-size:14px">{fmt(p.data.date)} · {readingTime(p.body)} min read</span></a>)}</div></section>
+</Base>
