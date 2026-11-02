@@ -1,0 +1,19 @@
+---
+import Base from '../../layouts/Base.astro';
+import Shot from '../../components/Shot.astro';
+import Cta from '../../components/Cta.astro';
+import { useCases } from '../../data/usecases';
+import { SITE } from '../../config';
+export function getStaticPaths() { return useCases.map((u) => ({ params: { slug: u.slug }, props: { u } })); }
+const { u } = Astro.props;
+---
+<Base title={`Ventrix for ${u.name.toLowerCase()}`} description={u.short + ' ' + u.intro}>
+  <section class="hero"><div class="wrap hero-grid">
+    <div><span class="eyebrow"><a href="/use-cases" style="text-decoration:none">Use cases</a> / {u.name}</span><h1 style="font-size:clamp(42px,6.5vw,76px)">{u.headline}</h1><p class="lede">{u.intro}</p><div class="cta-row"><a class="btn primary" href={SITE.appUrl}>Get started</a></div></div>
+    <Shot name={u.shot} alt={`Ventrix screen relevant to ${u.name.toLowerCase()}`} eager />
+  </div></section>
+  <section class="sec"><div class="wrap"><h2>Sound familiar?</h2><div class="pain" style="margin-top:20px">{u.problems.map(([t, d]) => <div><strong>{t}</strong><span class="muted">{d}</span></div>)}</div></div></section>
+  <section class="sec"><div class="wrap narrow"><h2>What changes</h2><ul class="checks">{u.wins.map((w) => <li>{w}</li>)}</ul>
+    {u.articleSlug && <p style="margin-top:24px"><a class="more" href={`/blog/${u.articleSlug}`}>Read the related guide →</a></p>}</div></section>
+  <Cta />
+</Base>
