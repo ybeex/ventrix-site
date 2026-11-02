@@ -1,0 +1,7 @@
+---
+const { name, alt, eager = false } = Astro.props;
+---
+<div class="shot-frame">
+  <img class="shot light" src={`/shots/${name}-light.webp`} alt={alt} width="1600" height="1000" loading={eager ? 'eager' : 'lazy'} />
+  <img class="shot night" src={`/shots/${name}-night.webp`} alt={alt} width="1600" height="1000" loading={eager ? 'eager' : 'lazy'} />
+</div>
