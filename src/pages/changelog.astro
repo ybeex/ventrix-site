@@ -1,0 +1,8 @@
+---
+import Base from '../layouts/Base.astro';
+import { changelog } from '../data/changelog';
+---
+<Base title="Changelog" description="What’s new in Ventrix.">
+  <section class="hero"><div class="wrap narrow"><span class="eyebrow">Changelog</span><h1>What’s new.</h1></div></section>
+  <section class="sec tight"><div class="wrap narrow">{changelog.map((c) => <article class="card glass"><span class="badge">v{c.version}</span><h3 style="margin-top:10px">{c.title}</h3><p class="muted">{c.date}</p><ul class="checks" style="margin-top:14px">{c.items.map((i) => <li>{i}</li>)}</ul></article>)}</div></section>
+</Base>
