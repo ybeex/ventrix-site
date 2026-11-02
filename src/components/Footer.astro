@@ -1,0 +1,17 @@
+﻿---
+import { SITE } from '../config';
+import Icon from './Icon.astro';
+const y = new Date().getFullYear();
+---
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><a class="brand" href="/" style="padding:0"><span class="brand-mark"><Icon name="brand" /></span>{SITE.product}</a>
+        <p class="muted" style="margin-top:10px;max-width:32ch">{SITE.tagline} Stock and tool tracking for shops, workshops and stores.</p></div>
+      <div><h4>Product</h4><a href="/features">Features</a><a href="/use-cases">Use cases</a><a href="/pricing">Pricing</a><a href="/changelog">Changelog</a><a href="/security">Security</a></div>
+      <div><h4>Company</h4><a href="/about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href={SITE.appUrl}>Sign in</a></div>
+      <div><h4>Legal</h4><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookies</a></div>
+    </div>
+    <div class="legalbar"><span>© {y} {SITE.company}. All rights reserved.</span><span><a href="/rss.xml" style="display:inline">RSS</a> · <a href={`mailto:${SITE.email.hello}`} style="display:inline">{SITE.email.hello}</a></span></div>
+  </div>
+</footer>
