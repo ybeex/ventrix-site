@@ -1,0 +1,9 @@
+---
+import Base from './Base.astro';
+import { SITE } from '../config';
+const { title, description } = Astro.props;
+---
+<Base title={title} description={description}>
+  <section class="doc-head"><div class="wrap narrow"><span class="eyebrow">Legal</span><h1>{title}</h1><p class="meta">Last updated {SITE.legal.lastUpdated}</p></div></section>
+  <section class="sec tight"><div class="wrap narrow prose"><slot /></div></section>
+</Base>
