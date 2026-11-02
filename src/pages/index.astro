@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import Shot from '../components/Shot.astro';
+import Cta from '../components/Cta.astro';
+import Icon from '../components/Icon.astro';
+import { SITE, naira } from '../config';
+import { features } from '../data/features';
+import { useCases } from '../data/usecases';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('blog')).sort((a, b) => +b.data.date - +a.data.date).slice(0, 3);
+const faq: [string, string][] = [
+  ['What is Ventrix?', 'A web app for tracking tools and stock: who has what, what is running low, and what a count found. It runs in the browser on a phone, tablet or computer.'],
+  ['Do I need special hardware?', 'No. Any phone, tablet or computer with a browser works. If you use barcodes or tags, the app can look items up by code.'],
+  ['Does it work without internet?', 'Yes, for everyday work. Search items, check out, return and use up while offline. Actions queue on the device and sync when you reconnect.'],
+  ['How much does it cost?', `${naira(SITE.price.amount)} per ${SITE.price.period}. One plan, everything included. See the pricing page for details.`],
+  ['Who can see my data?', 'Only people you add to your organization, and only what their role allows. Read the security page for specifics.'],
+];
+const ld = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+---
+<Base title="Ventrix · Tool and stock tracking for shops and workshops" description="Know who has every tool and what is running low. Check-out, stock counts and low-stock alerts that work offline. By Ventrix." jsonLd={ld}>
+  <section class="hero"><div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Tool and stock tracking</span>
+      <h1>Know where every tool and every box is.</h1>
+      <p class="lede">Ventrix records who took what, warns you before stock runs out, and keeps working when the connection drops. Built for stores, workshops and crews.</p>
+      <div class="cta-row"><a class="btn primary" href={SITE.appUrl}>Get started</a><a class="btn" href="#how">See how it works</a></div>
+      <p class="muted" style="margin-top:16px;font-size:15px">{naira(SITE.price.amount)} per {SITE.price.period}. One plan, everything included.</p>
+    </div>
+    <Shot name="dashboard" alt="The Ventrix home screen with quick actions for check out, check in, use up, restock and scan" eager />
+  </div></section>
+
+  <section class="sec tight"><div class="wrap"><div class="pain">
+    <div><strong>“Who has the grinder?”</strong><span class="muted">The question that stops a morning.</span></div>
+    <div><strong>“It was here on Tuesday.”</strong><span class="muted">Tools that walk off, quietly.</span></div>
+    <div><strong>“The count doesn’t match.”</strong><span class="muted">Month-end, again.</span></div>
+  </div></div></section>
+
+  <section class="sec" id="how"><div class="wrap">
+    <h2>Three jobs, done properly.</h2>
+    <p class="sub">Everything in Ventrix supports these. No clutter, nothing you have to learn twice.</p>
+    <div class="grid g3">
+      {[features[0], features[1], features[2]].map((f) => <a class="card glass link" href={`/features/${f.slug}`}><div class="ic"><Icon name={f.icon as any} /></div><h3>{f.name}</h3><p>{f.short}</p><span class="more">Learn more →</span></a>)}
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap split">
+    <div><span class="eyebrow">Offline-ready</span><h2>Works when the Wi-Fi doesn’t.</h2>
+      <p class="lede">A local copy of your items and people means search works anywhere. Actions queue on the device and send safely once you’re back online, with no double entries.</p>
+      <ul class="checks" style="margin:20px 0"><li>Check out and return in a dead spot</li><li>A bar shows what is waiting to sync</li><li>Clashes are explained in plain words</li></ul>
+      <a class="more" href="/features/offline">How offline works →</a></div>
+    <Shot name="items" alt="The Ventrix items list" />
+  </div></section>
+
+  <section class="sec"><div class="wrap split rev">
+    <div><span class="eyebrow">Control</span><h2>Control without the paperwork.</h2>
+      <p class="lede">Four roles, an approval policy you set, optional photo proof, and quick PIN switching so a whole crew can share one tablet.</p>
+      <ul class="checks" style="margin:20px 0"><li>Choose which actions need a supervisor</li><li>Require a photo where it matters</li><li>An activity log of who did what</li></ul>
+      <a class="more" href="/features/control">See the controls →</a></div>
+    <Shot name="outstanding" alt="The outstanding board showing what is checked out and to whom" />
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Built for places that lend things out.</h2>
+    <p class="sub">If it leaves the shelf and should come back, Ventrix is for you.</p>
+    <div class="grid g4">
+      {useCases.map((u) => <a class="card glass link" href={`/use-cases/${u.slug}`}><div class="ic"><Icon name={u.icon as any} /></div><h3>{u.name}</h3><p>{u.short}</p></a>)}
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="card glass" style="text-align:center;padding:40px 24px">
+      <span class="eyebrow">Pricing</span><h2>One plan. Everything in it.</h2>
+      <div class="price" style="font:900 72px/1 var(--display)">{naira(SITE.price.amount)}<small style="font:600 18px var(--sans);color:var(--ink-muted)"> / {SITE.price.period}</small></div>
+      <p class="muted" style="margin:6px 0 20px">Check-out, stock, counts, offline, approvals and reports.</p>
+      <a class="btn primary" href="/pricing">See what’s included</a>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap narrow">
+    <h2>Questions</h2>
+    {faq.map(([q, a]) => <details name="faq"><summary>{q}</summary><p>{a}</p></details>)}
+  </div></section>
+
+  {posts.length > 0 && <section class="sec"><div class="wrap">
+    <h2>From the blog</h2><p class="sub">Practical guides on running a store, a tool room or a workshop.</p>
+    <div class="grid g3">{posts.map((p) => <a class="card glass post-card" href={`/blog/${p.id}`}><span class="badge">{p.data.tags[0]}</span><h3>{p.data.title}</h3><p>{p.data.description}</p></a>)}</div>
+  </div></section>}
+
+  <Cta />
+</Base>
