@@ -1,0 +1,40 @@
+﻿---
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import {
+  FiActivity,
+  FiArrowUpRight,
+  FiBookOpen,
+  FiCheckSquare,
+  FiFileText,
+  FiMenu,
+  FiPackage,
+  FiSettings,
+  FiShield,
+  FiTool,
+  FiTruck,
+  FiWifiOff,
+  FiX,
+} from 'react-icons/fi';
+
+const icons = {
+  checkout: FiArrowUpRight,
+  stock: FiPackage,
+  counts: FiCheckSquare,
+  offline: FiWifiOff,
+  control: FiShield,
+  reports: FiFileText,
+  tools: FiTool,
+  workshop: FiSettings,
+  school: FiBookOpen,
+  field: FiTruck,
+  brand: FiActivity,
+  menu: FiMenu,
+  close: FiX,
+};
+type IconName = keyof typeof icons;
+const { name, class: className = '' } = Astro.props as { name: IconName; class?: string };
+const IconComponent = icons[name] ?? FiPackage;
+const markup = renderToStaticMarkup(createElement(IconComponent, { 'aria-hidden': true, focusable: 'false' }));
+---
+<span class:list={['ui-icon', className]} aria-hidden="true" set:html={markup}></span>
