@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { SITE } from '../config';
+const principles: [string, string][] = [
+  ['Simple at the counter', 'The person using it is busy, standing up and holding a tool. Every screen is built for that moment first.'],
+  ['Honest records', 'The record should say what really happened. That means reasons for differences, names on actions and a log nobody can rewrite.'],
+  ['Works where you work', 'Stores and yards have bad signal. If it only works with a perfect connection, it won’t get used.'],
+  ['Control you can dial', 'Some places need approvals and photos. Others don’t. You choose, and you can change it later.'],
+];
+---
+<Base title="About" description={`${SITE.company} builds Ventrix, practical software for tracking tools and stock in stores, workshops and field crews.`}>
+  <section class="hero"><div class="wrap narrow"><span class="eyebrow">About</span><h1>Software for places that run on shelves.</h1>
+    <p class="lede">{SITE.company} makes practical business software. Ventrix is our tool and stock tracker, for the people who keep a store, a workshop or a crew supplied.</p></div></section>
+  <section class="sec tight"><div class="wrap narrow prose">
+    <h2>Why we built it</h2>
+    <p>Most small stores and workshops track tools in a notebook, a spreadsheet or someone’s memory. That works until the person who remembers is off, a tool goes missing, or the month-end count doesn’t match.</p>
+    <p>Existing inventory software tends to be built for warehouses with scanners and dedicated staff. It is heavy, expensive and slow at the counter. We wanted something a Ventrix could learn in a few minutes and a manager could trust.</p>
+    <p>Ventrix does a small number of things properly: it records who has what, warns you before stock runs out, and keeps counts honest. It works offline because real stores lose signal.</p>
+  </div></section>
+  <section class="sec"><div class="wrap"><h2>What we believe</h2><div class="grid g2" style="margin-top:20px">{principles.map(([t, d]) => <div class="card glass"><h3>{t}</h3><p>{d}</p></div>)}</div></div></section>
+  <section class="sec"><div class="wrap narrow"><h2>Talk to us</h2><p class="muted" style="font-size:18px">We read every message. Tell us how your store works, what goes wrong and what you’d want from a tool like this.</p>
+    <p style="margin-top:18px"><a class="btn primary" href="/contact">Contact us</a></p></div></section>
+  <Cta />
+</Base>

@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../config';
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
+const topics = [['start', 'I’d like to get started'], ['demo', 'Show me a walkthrough'], ['pricing', 'Question about pricing'], ['support', 'I need help'], ['other', 'Something else']];
+---
+<Base title="Contact" description="Get in touch with the Ventrix team: start using Ventrix, book a walkthrough, or ask for help.">
+  <section class="hero"><div class="wrap"><span class="eyebrow">Contact</span><h1>Let’s talk about your store.</h1><p class="lede">Tell us a little and we’ll get back to you, usually within one working day.</p></div></section>
+  <section class="sec tight"><div class="wrap grid" style="grid-template-columns:1.2fr .8fr;gap:30px;align-items:start">
+    <div class="card glass">
+      <form id="cf" data-endpoint={endpoint} data-to={SITE.email.hello} novalidate>
+        <label>Your name<input name="name" autocomplete="name" required /></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+        <label>Business (optional)<input name="business" autocomplete="organization" /></label>
+        <label>What can we help with?<select name="topic" id="topic">{topics.map(([v, l]) => <option value={v}>{l}</option>)}</select></label>
+        <label>Message<textarea name="message" required></textarea></label>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button class="btn primary" type="submit">Send message</button>
+        <p id="status" role="status" class="muted" style="min-height:1.5em"></p>
+        <p class="muted" style="font-size:14px">By sending this you agree to our <a href="/privacy" style="text-decoration:underline">Privacy Policy</a>. We only use your details to reply.</p>
+      </form>
+      <noscript><p>JavaScript is off. Email us at <a href={`mailto:${SITE.email.hello}`}>{SITE.email.hello}</a>.</p></noscript>
+    </div>
+    <div class="stack" style="display:grid;gap:16px">
+      <div class="card glass"><h3>Sales & walkthroughs</h3><p><a href={`mailto:${SITE.email.hello}`} style="text-decoration:underline">{SITE.email.hello}</a></p></div>
+      <div class="card glass"><h3>Support</h3><p><a href={`mailto:${SITE.email.support}`} style="text-decoration:underline">{SITE.email.support}</a></p><p style="margin-top:6px">Existing customers: please include your organization name.</p></div>
+      <div class="card glass"><h3>Privacy & legal</h3><p><a href={`mailto:${SITE.email.privacy}`} style="text-decoration:underline">{SITE.email.privacy}</a><br /><a href={`mailto:${SITE.email.legal}`} style="text-decoration:underline">{SITE.email.legal}</a></p></div>
+    </div>
+  </div></section>
+  <style>@media(max-width:860px){.wrap.grid{grid-template-columns:1fr!important}}</style>
+  <script is:inline>
+    (function () {
+      var f = document.getElementById('cf'), s = document.getElementById('status');
+      var t = new URLSearchParams(location.search).get('topic'); if (t) document.getElementById('topic').value = t;
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var d = Object.fromEntries(new FormData(f).entries());
+        if (d.website) return;
+        if (!d.name || !/^\S+@\S+\.\S+$/.test(d.email || '') || !d.message) { s.textContent = 'Please add your name, a valid email and a message.'; return; }
+        var ep = f.dataset.endpoint;
+        if (ep) {
+          s.textContent = 'Sending…';
+          fetch(ep, { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json' }, body: JSON.stringify(d) })
+            .then(function (r) { if (!r.ok) throw 0; f.reset(); s.textContent = 'Thanks. We’ll be in touch soon.'; })
+            .catch(function () { s.textContent = 'Something went wrong. Please email ' + f.dataset.to + ' instead.'; });
+        } else {
+          var body = 'Name: ' + d.name + '\nEmail: ' + d.email + '\nBusiness: ' + (d.business || '-') + '\n\n' + d.message;
+          location.href = 'mailto:' + f.dataset.to + '?subject=' + encodeURIComponent('[' + d.topic + '] Message from ' + d.name) + '&body=' + encodeURIComponent(body);
+          s.textContent = 'Opening your email app. If nothing happens, write to ' + f.dataset.to + '.';
+        }
+      });
+    })();
+  </script>
+</Base>
