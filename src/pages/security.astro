@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../config';
+const items: [string, string][] = [
+  ['Roles and permissions', 'Four roles (admin, supervisor, store staff, viewer) decide what each person can do. Sensitive actions, such as managing users, locations and imports, are limited to admins.'],
+  ['Sessions', 'Sign-in uses a session token. Sessions end automatically after a period of inactivity, and signing out clears the session and any locally cached data on that device.'],
+  ['Shared devices', 'Several people can share a counter tablet by switching with a PIN. PIN sessions are short-lived and are never remembered after a page refresh.'],
+  ['Records that stay true', 'Every transaction carries the name of who did it. Actions are recorded with a unique key so a retry never creates a duplicate entry.'],
+  ['Approvals and photo proof', 'Admins can require supervisor approval for chosen operations and photo proof for check-outs, returns, damage, adjustments and counts.'],
+  ['Activity log', 'Supervisors and admins can review who did what and when. Users can’t edit it.'],
+  ['Encryption in transit', 'The app is served over HTTPS.'],
+  ['Your data', 'Supervisors and admins can export records as CSV at any time. See our Privacy Policy for how we handle personal data.'],
+];
+---
+<Base title="Security" description="How Ventrix protects your records: roles, approvals, sessions, activity log and photo proof.">
+  <section class="hero"><div class="wrap narrow"><span class="eyebrow">Security</span><h1>Trust, in plain language.</h1><p class="lede">What Ventrix does today to keep your records accurate and your access under control.</p></div></section>
+  <section class="sec tight"><div class="wrap narrow"><div class="grid">{items.map(([t, d]) => <div class="card glass"><h3>{t}</h3><p>{d}</p></div>)}</div>
+    <p class="muted" style="margin-top:24px">We don’t currently hold third-party security certifications, and we won’t claim any we don’t have. Found a vulnerability? Email <a href={`mailto:${SITE.email.legal}`} style="text-decoration:underline">{SITE.email.legal}</a>.</p></div></section>
+</Base>
