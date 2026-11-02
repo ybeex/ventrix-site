@@ -15,7 +15,10 @@ const faq: [string, string][] = [
   ['How much does it cost?', `${naira(SITE.price.amount)} per ${SITE.price.period}. One plan, everything included. See the pricing page for details.`],
   ['Who can see my data?', 'Only people you add to your organization, and only what their role allows. Read the security page for specifics.'],
 ];
-const ld = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+const ld = [
+  { '@context': 'https://schema.org', '@type': 'SoftwareApplication', '@id': `${SITE.url}/#software`, name: SITE.product, url: SITE.url, applicationCategory: 'BusinessApplication', operatingSystem: 'Web', description: 'Tool and stock tracking software for stores, workshops and field crews, with check-outs, stock counts, low-stock alerts and offline support.', publisher: { '@id': `${SITE.url}/#organization` }, offers: { '@type': 'Offer', price: SITE.price.amount, priceCurrency: SITE.price.currency, url: `${SITE.url}/pricing`, description: `Per organization, per ${SITE.price.period}.` } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+];
 ---
 <Base title="Ventrix · Tool and stock tracking for shops and workshops" description="Know who has every tool and what is running low. Check-out, stock counts and low-stock alerts that work offline. By Ventrix." jsonLd={ld}>
   <section class="hero"><div class="wrap hero-grid">
