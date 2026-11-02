@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { SITE, naira } from '../config';
+const incl = ['Check out and return, with batches, due dates and partial returns', 'Tools and consumables, with minimums and low-stock alerts', 'Shelves, categories, collections and item photos', 'Stock counts with reasons and approvals', 'Works offline, with a sync queue', 'Roles, PIN switching and an approval policy', 'Optional photo proof on transactions', 'Reports, activity log and CSV export', 'Jobs, announcements and notifications', 'Light and dark themes, on any phone, tablet or computer'];
+const faq: [string, string][] = [
+  ['Is the price per user?', `No. ${naira(SITE.price.amount)} per ${SITE.price.period} is for your organization. Add the people who need access.`],
+  ['What currency do I pay in?', 'Nigerian naira.'],
+  ['Is there a contract?', 'Talk to us about terms when you get started. See our Terms for the legal detail.'],
+  ['Can I try it first?', 'Ask us for a walkthrough. We’ll show you the product with real examples from your kind of business.'],
+  ['What if I have several sites or a larger team?', 'Get in touch. We’ll look at what you need.'],
+  ['Can I export my data?', 'Yes. Supervisors and admins can export reports as CSV at any time.'],
+];
+const ld = { '@context': 'https://schema.org', '@type': 'Product', name: SITE.product, description: 'Tool and stock tracking software.', brand: { '@type': 'Brand', name: SITE.company }, offers: { '@type': 'Offer', price: SITE.price.amount, priceCurrency: SITE.price.currency, url: SITE.url + "/pricing" } };
+---
+<Base title="Pricing" description={`One plan at ${naira(SITE.price.amount)} per ${SITE.price.period} with everything included: check-out, stock, counts, offline, approvals and reports.`} jsonLd={ld}>
+  <section class="hero" style="text-align:center"><div class="wrap"><span class="eyebrow">Pricing</span><h1>One plan. Everything in it.</h1><p class="lede" style="margin-inline:auto">No tiers to decode and no features held back.</p></div></section>
+  <section class="sec tight"><div class="wrap"><div class="card glass price-card">
+    <span class="badge">Ventrix</span>
+    <div class="price">{naira(SITE.price.amount)}<small> / {SITE.price.period}</small></div>
+    <p class="muted">Per organization. Pay in naira.</p>
+    <ul class="checks" style="margin:22px 0">{incl.map((i) => <li>{i}</li>)}</ul>
+    <a class="btn primary" style="width:100%" href={SITE.appUrl}>Get started</a>
+  </div></div></section>
+  <section class="sec"><div class="wrap narrow"><h2>Pricing questions</h2>{faq.map(([q, a]) => <details name="faq"><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+  <Cta title="Not sure yet?" text="Tell us how your store works and we’ll show you how Ventrix fits." />
+</Base>
