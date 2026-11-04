@@ -20,7 +20,7 @@ const ld = { '@context': 'https://schema.org', '@type': 'Product', name: SITE.pr
     <div class="price">{naira(SITE.price.amount)}<small> / {SITE.price.period}</small></div>
     <p class="muted">Per organization. Pay in naira.</p>
     <ul class="checks" style="margin:22px 0">{incl.map((i) => <li>{i}</li>)}</ul>
-    <a class="btn primary" style="width:100%" href={SITE.appUrl}>Get started</a>
+    <a class="btn primary" style="width:100%" href={SITE.signupUrl}>Get started</a>
   </div></div></section>
   <section class="sec"><div class="wrap narrow"><h2>Pricing questions</h2>{faq.map(([q, a]) => <details name="faq"><summary>{q}</summary><p>{a}</p></details>)}</div></section>
   <Cta title="Not sure yet?" text="Tell us how your store works and we’ll show you how Ventrix fits." />
