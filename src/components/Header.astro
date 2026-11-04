@@ -11,13 +11,13 @@ const on = (h: string) => path === h || path.startsWith(h + '/');
     {nav.map(([l, h]) => <a href={h} aria-current={on(h) ? 'page' : undefined}>{l}</a>)}
     <div class="mobile-actions">
       <a class="btn sm signin" href={SITE.appUrl}>Sign in</a>
-      <a class="btn sm primary getstarted" href={SITE.appUrl}>Get started</a>
+      <a class="btn sm primary getstarted" href={SITE.signupUrl}>Get started</a>
     </div>
   </nav>
   <div class="nav-r">
     <button class="btn icon sm" id="theme" aria-label="Toggle dark mode" type="button">◐</button>
     <a class="btn sm signin" href={SITE.appUrl}>Sign in</a>
-    <a class="btn sm primary getstarted" href={SITE.appUrl}>Get started</a>
+    <a class="btn sm primary getstarted" href={SITE.signupUrl}>Get started</a>
     <button class="btn icon sm menu-btn" id="menu" aria-label="Menu" aria-expanded="false" aria-controls="links" type="button"><Icon name="menu" class="menu-icon" /><Icon name="close" class="close-icon" /></button>
   </div>
 </header>

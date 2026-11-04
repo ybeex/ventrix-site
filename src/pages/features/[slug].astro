@@ -13,7 +13,7 @@ const ld = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: f
 <Base title={f.name} description={f.short + ' ' + f.intro.split('.')[0] + '.'} jsonLd={ld}>
   <section class="hero"><div class="wrap hero-grid">
     <div><span class="eyebrow"><a href="/features" style="text-decoration:none">Features</a> / {f.name}</span><h1 style="font-size:clamp(42px,6.5vw,76px)">{f.headline}</h1><p class="lede">{f.intro}</p>
-      <div class="cta-row"><a class="btn primary" href={SITE.appUrl}>Get started</a><a class="btn" href="/pricing">Pricing</a></div></div>
+      <div class="cta-row"><a class="btn primary" href={SITE.signupUrl}>Get started</a><a class="btn" href="/pricing">Pricing</a></div></div>
     <Shot name={f.shot} alt={f.shotAlt} eager />
   </div></section>
   <section class="sec"><div class="wrap split">
