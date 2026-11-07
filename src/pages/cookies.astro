@@ -18,8 +18,12 @@ import { SITE } from '../config';
 <tr><td><code>sk.device</code></td><td>Local storage</td><td>An anonymous ID for this device, used to recognise trusted devices</td><td>Until cleared</td></tr>
 <tr><td><code>sk.org</code></td><td>Local storage</td><td>Remembers your organization’s short name on the sign-in form (not your password)</td><td>Until cleared</td></tr>
 <tr><td><code>sk.snap</code></td><td>Local storage</td><td>Records when your offline copy was last refreshed</td><td>Until you sign out</td></tr>
-<tr><td><code>sk.theme</code></td></td><td>Local storage</td><td>Remembers your theme</td><td>Until cleared</td></tr>
-<tr><td><code>Ventrix-cache-v1</code></td><td>IndexedDB</td><td>A local copy of items and people so search works offline</td><td>Until you sign out</td></tr>
+<tr>
+  <td><code>sk.theme</code></td>
+  <td>Local storage</td>
+  <td>Remembers your theme</td>
+  <td>Until cleared</td>
+</tr>
 </tbody></table>
 <p>Signing out clears the session and the offline copy on that device.</p>
 
