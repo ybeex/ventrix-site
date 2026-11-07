@@ -12,7 +12,7 @@ npm run build     # outputs dist/
 1. **Edit `src/config.ts`**: company legal name, address, CAC number, email addresses, `plausibleDomain` (leave empty for no analytics). The legal pages read from it.
 2. **Have a lawyer review** `/privacy`, `/terms` and `/cookies`. They are solid drafts, not legal advice. Fill the `[hosting provider]`, `[email provider]`, `[payment provider]` placeholders in the privacy page.
 3. **Contact form**: with no config it opens the visitor's email app. To post to a form service instead, set `PUBLIC_FORM_ENDPOINT` at build time.
-4. **App links**: "Sign in" goes to `https://vntrx.vercel.app`; "Get started" goes to `https://vntrx.vercel.app/signup`.
+4. **App links**: "Sign in" goes to `https://app.ventrix.app`. "Get started" goes to `/contact?topic=start` until you have self-serve sign-up.
 5. **Hosting**: pages build as `pricing.html` etc. Netlify, Cloudflare Pages and Vercel serve these as `/pricing` automatically. On nginx use `try_files $uri $uri.html $uri/ =404;`.
 6. Screenshots in `public/shots` come from demo data; retake them with your own data before launch.
 

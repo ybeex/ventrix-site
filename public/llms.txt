@@ -2,7 +2,7 @@
 
 > Ventrix is web-based tool and stock tracking software for stores, workshops, tool rooms, schools and field crews. It records who has checked-out equipment, tracks consumable stock and counts, and supports everyday work offline.
 
-Ventrix is built by Ventrix and is available at https://ventrix.app. Sign in at https://vntrx.vercel.app or create an account at https://vntrx.vercel.app/signup.
+Ventrix is built by Ventrix and is available at https://vntrx-site.vercel.app. The application is at https://vntrx.vercel.app.
 
 ## What it does
 
